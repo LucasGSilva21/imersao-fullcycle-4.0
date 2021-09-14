@@ -11,10 +11,15 @@ export enum TransactionCategory {
   CATEGORY2 = 'category2',
 }
 
+export const TransactionCategoryList: string[] =
+  Object.values(TransactionCategory);
+
 export enum TransactionType {
   CREDIT = 'credit',
   DEBIT = 'debit',
 }
+
+export const TransactionTypeList: string[] = Object.values(TransactionType);
 
 @Table({
   tableName: 'transactions',
