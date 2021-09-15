@@ -1,7 +1,7 @@
-#!bin/bash
+#!/bin/bash
 
-if [ ! -f ".env"]; then
-  cp .env.example .env
+if [ ! -f ".env" ]; then
+    cp .env.example .env
 fi
 
 npm install
