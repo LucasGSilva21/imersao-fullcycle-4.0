@@ -6,7 +6,7 @@ import { Transaction } from './entities/transaction.entity';
 import { Account } from 'src/accounts/entities/account.entity';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Transaction]), Account],
+  imports: [SequelizeModule.forFeature([Transaction, Account])],
   controllers: [TransactionsController],
   providers: [TransactionsService],
 })
