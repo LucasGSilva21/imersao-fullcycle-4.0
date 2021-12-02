@@ -6,7 +6,7 @@ import {
   SearchState,
   SortingState,
 } from "@devexpress/dx-react-grid";
-import { Container, Button, Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import {
   Grid,
   PagingPanel,
@@ -15,13 +15,14 @@ import {
   TableHeaderRow,
   Toolbar,
 } from "@devexpress/dx-react-grid-material-ui";
-import { GetServerSideProps, NextPage } from "next";
+import { NextPage } from "next";
 import makeHttp from "../../utils/http";
 import { Transaction } from "../../utils/model";
 import { parseISO, format } from "date-fns";
 import AddIcon from "@material-ui/icons/Add";
 import { useRouter } from "next/router";
-import { Token, validateAuth } from "../../utils/auth";
+import { Page } from "../../components/Page";
+import { withAuth } from "../../hof/withAuth";
 
 interface TransactionsPageProps {
   transactions: Transaction[];
@@ -59,7 +60,7 @@ const columns: Column[] = [
 const TransactionsPage: NextPage<TransactionsPageProps> = (props) => {
   const router = useRouter();
   return (
-    <Container>
+    <Page>
       <Typography component="h1" variant="h4">
         Minhas transações
       </Typography>
@@ -85,26 +86,13 @@ const TransactionsPage: NextPage<TransactionsPageProps> = (props) => {
         <PagingPanel />
         <IntegratedPaging />
       </Grid>
-    </Container>
+    </Page>
   );
 };
 
 export default TransactionsPage;
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const auth = validateAuth(ctx.req);
-
-  if (!auth) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/login",
-      }
-    }
-  }
-
-  const token = (auth as Token).token;
-
+export const getServerSideProps = withAuth(async (ctx, { token }) => {
   const { data: transactions } = await makeHttp(token).get("transactions");
 
   return {
@@ -112,4 +100,4 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       transactions,
     },
   };
-};
+});

@@ -16,6 +16,7 @@ import {
   TransactionCategoryLabels,
   TransactionTypeLabels,
 } from "../../utils/model";
+import { Page } from "../../components/Page";
 
 const TransactionsNewPage: NextPage = () => {
   const { register, handleSubmit } = useForm();
@@ -41,7 +42,7 @@ const TransactionsNewPage: NextPage = () => {
   }
 
   return keycloak?.authenticated ? (
-    <Container>
+    <Page>
       <Typography component="h1" variant="h4">
         Nova transação
       </Typography>
@@ -117,7 +118,7 @@ const TransactionsNewPage: NextPage = () => {
           </Grid>
         </Grid>
       </form>
-    </Container>
+    </Page>
   ) : null;
 };
 
