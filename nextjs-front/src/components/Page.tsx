@@ -9,7 +9,7 @@ const useStyles = makeStyles({
 });
 
 interface PageProps {}
-export const Page: NextPage<PageProps> = (props) => {
+export const Page: NextPage<PageProps> = (props: any) => {
   const classes = useStyles();
 
   return (

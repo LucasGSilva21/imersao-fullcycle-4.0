@@ -16,5 +16,7 @@ services:
 #C:\Windows\system32\drivers\etc\hosts
 
 # 127.0.0.1 host.docker.internal
+# 127.0.0.1 tenant1.docker.internal
+# 127.0.0.1 tenant2.docker.internal
 
 # 3000

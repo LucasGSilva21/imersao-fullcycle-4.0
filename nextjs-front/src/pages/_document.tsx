@@ -1,14 +1,13 @@
-// eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, {
   Html,
   Head,
   NextScript,
   Main,
   DocumentContext,
-} from 'next/document';
-import React from 'react';
-import { ServerStyleSheets } from '@material-ui/core/styles';
-import theme from '../utils/theme';
+} from "next/document";
+import React from "react";
+import { ServerStyleSheets } from "@material-ui/core/styles";
+import theme from "../utils/theme";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
