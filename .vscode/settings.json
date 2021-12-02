@@ -1,0 +1,7 @@
+{
+  "eslint.workingDirectories": [
+    "./keycloak",
+    "./nestjs-api",
+    "./nextjs-front",
+  ]
+}
